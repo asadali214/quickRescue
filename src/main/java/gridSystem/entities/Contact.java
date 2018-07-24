@@ -27,6 +27,7 @@ public class Contact {
 	private String gender;
 	@Column(name = "phone_number")
 	private String phoneNumber;
+	
 	@Column(name = "status")
 	private Boolean status;
 	
