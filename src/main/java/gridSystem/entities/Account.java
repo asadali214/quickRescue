@@ -10,24 +10,27 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 //corporate members info
 @Entity
 @Table(name = "Account")
 public class Account {
-	
-	@Id @GeneratedValue
+
+	@Id
+	@GeneratedValue
 	@Column(name = "id")
 	private int id;
+
 	@Column(name = "Name")
 	private String name;
+
 	@Column(name = "Email_Domain")
 	private String emailDomain;
+
 	@Column(name = "TimeZoneCity")
 	private String timeZoneCity;
-	
-	@OneToMany(mappedBy="account")
-	private Collection<Contact> contacts=new ArrayList<Contact>();
+
+	@OneToMany(mappedBy = "account")
+	private Collection<Contact> contacts = new ArrayList<Contact>();
 
 	public Account() {
 
@@ -39,11 +42,11 @@ public class Account {
 		this.name = name;
 		this.emailDomain = emailDomain;
 		this.timeZoneCity = timeZoneCity;
-		
+
 	}
 
 	// All the Getters&Setters are below:
-	
+
 	public int getId() {
 		return id;
 	}
@@ -60,7 +63,6 @@ public class Account {
 		this.id = id;
 	}
 
-	
 	public String getName() {
 		return name;
 	}
@@ -68,7 +70,7 @@ public class Account {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public String getEmailDomain() {
 		return emailDomain;
 	}
@@ -76,7 +78,7 @@ public class Account {
 	public void setEmailDomain(String emailDomain) {
 		this.emailDomain = emailDomain;
 	}
-	
+
 	public String getTimeZoneCity() {
 		return timeZoneCity;
 	}

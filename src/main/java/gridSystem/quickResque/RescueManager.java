@@ -17,7 +17,9 @@ import gridSystem.entities.Contact;
 public class RescueManager implements QuickRescueFunctions {
 	SessionFactory factory;
 
-	
+	/*
+	 * This Constructor also used to initialize the SessionFactory's Object.
+	 */
 	public RescueManager() {
 		try {
 			factory = new Configuration().configure("hibernate.cfg.xml").addPackage("entities")
@@ -28,7 +30,8 @@ public class RescueManager implements QuickRescueFunctions {
 	}
 
 	/*
-	 * For details
+	 * This method is used to view all the accounts in the account table
+	 * It returns an ArrayList of all the accounts to be displayed
 	 * @see manager.QuickRescueFunctions
 	 */
 	public ArrayList<Account> viewAllAccounts() {
@@ -52,7 +55,9 @@ public class RescueManager implements QuickRescueFunctions {
 	}
 
 	/*
-	 * For details
+	 * It adds a new account into the account table
+	 * the only Argument is the object of the account to be added
+	 * return type is integer
 	 * @see manager.QuickRescueFunctions
 	 */
 	public int addNewAccount(Account account) {
@@ -73,7 +78,10 @@ public class RescueManager implements QuickRescueFunctions {
 	}
 
 	/*
-	 * For details
+	 * it is used to update the account whose id is provided in the arguments.
+	 * second argument is the updated account object it may or may not contain all the fields
+	 * but the account object should contain all the fields which are being updated
+	 * Its return type is the Account object after updating 
 	 * @see manager.QuickRescueFunctions
 	 */
 	public Account updateAccount(int id, Account accountNew) {
@@ -100,7 +108,7 @@ public class RescueManager implements QuickRescueFunctions {
 	}
 
 	/*
-	 * For details
+	 * This method is used to delete the account whose ID is provided in the arguments
 	 * @see manager.QuickRescueFunctions
 	 */
 	public void deleteAccount(int id) {
@@ -127,7 +135,9 @@ public class RescueManager implements QuickRescueFunctions {
 	}
 
 	/*
-	 * For details
+	 * This method is used to view all the contacts of a specific account
+	 * it takes the account id as an argument and give us all the corresponding contacts of that account
+	 * its returns an Array list of contacts of that account
 	 * @see manager.QuickRescueFunctions
 	 */
 	public ArrayList<Contact> viewAllContactsOfAccount(int AccountId) {
@@ -153,7 +163,9 @@ public class RescueManager implements QuickRescueFunctions {
 	}
 
 	/*
-	 * For details
+	 * This method is used to add a contact into an account
+	 * by taking account id and Contact's object as arguments
+	 * It also returns the id of the newly added account 
 	 * @see manager.QuickRescueFunctions
 	 */
 	public int addContactinAccount(Contact contact, int AccountId) {

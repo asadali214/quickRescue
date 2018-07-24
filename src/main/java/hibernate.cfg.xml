@@ -11,9 +11,10 @@
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password">GR911m31</property>
 		<property name="hibernate.hbm2ddl.auto">create</property>
-		
+
 		<mapping class="gridSystem.entities.Account" />
 		<mapping class="gridSystem.entities.Contact" />
 		<mapping class="gridSystem.entities.Address" />
+		
 	</session-factory>
 </hibernate-configuration>

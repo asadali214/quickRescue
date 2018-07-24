@@ -24,10 +24,11 @@ public class RescueManagerTest {
 			dummyAddress2);
 
 	/*
-	 * It first add an account in db and then match its id
+	 * It first add an account in DB and then match its id with expected id 
+	 * In the end we are also removing the inserted account
 	 */
 	@Test
-	public void testAddNewAccount() {// dependent on viewAllAccounts()
+	public void testAddNewAccount() {// dependent on getAccount(id)
 		int OutputId = manager.addNewAccount(dummyAccount1);
 		Account account = manager.getAccount(OutputId);
 		int expectedId = account.getId();
@@ -36,7 +37,10 @@ public class RescueManagerTest {
 	}
 
 	/*
-	 * It compare the full list and its size 
+	 * It first insert dummyData into the DB then get the array list of output 
+	 * by calling viewAllAccounts then first compare size of expected and resultant arrayLists
+	 * Then it also check the complete ArrayList by comparing its elements and their 
+	 * properties.
 	 */
 	@Test
 	public void testViewAllAccounts() {// dependent on addNewAccount()
@@ -55,9 +59,14 @@ public class RescueManagerTest {
 
 	}
 
+	/*
+	 * It tests the updateAccount method by matching the updated/edited properties of
+	 * NewAccount and updatedAccount
+	 */
 	@Test
 	public void testUpdateAccount() {// addNewAccount(), viewAllAccount()
 		insertDummyData();
+		
 		Account accountNew = new Account();
 		accountNew.setTimeZoneCity("Karachi");
 		Account accountUpdated = manager.updateAccount(dummyAccount1.getId(), accountNew);
@@ -71,7 +80,9 @@ public class RescueManagerTest {
 	}
 
 	/*
-	 * It compares the size of data base after deletion with its expected size
+	 * It compares the size of the table account after deletion with its expected size
+	 * it also compares the size of contacts after deletion of an account
+	 * As removing an account should also remove all the contacts too
 	 */
 	@Test
 	public void testDeleteAccount() {// dependent on addNewAccount(), addNewContact(), viewAllAccounts(),
@@ -88,7 +99,11 @@ public class RescueManagerTest {
 		assertEquals(contactsizeBeforeDeletionExpected, contactsizeAfterDeletionActual);
 
 	}
-
+	/*
+	 * It first insert dummyData into the DB then get the array list of output 
+	 * by calling viewAllContacts then it compares the size of 
+	 * expected and resultant arrayLists
+	 */
 	@Test
 	public void testViewAllContactsOfAccount() {
 		insertDummyData();
@@ -102,6 +117,11 @@ public class RescueManagerTest {
 		deleteDummyData();
 	}
 
+	/*
+	 * It first add an account in DB and then a contact against that account
+	 * then match contact's id with its expected id 
+	 * In the end we are also removing the inserted account
+	 */
 	@Test
 	public void testAddContactinAccount() {
 		manager.addNewAccount(dummyAccount1);
@@ -113,9 +133,14 @@ public class RescueManagerTest {
 		
 	}
 
+	/*
+	 * It tests the updateContact method by matching the updated/edited properties of
+	 * NewContact and updatedContact it also check if address of a contact is updated or not
+	 */
 	@Test
 	public void testUpdateContactOfAccount() {
 		insertDummyData();
+		
 		Contact contactNew = new Contact();
 		Address addressNew = new Address();
 		contactNew.setEmailAddress("aali@globalrescue.com");
@@ -126,9 +151,18 @@ public class RescueManagerTest {
 		String expected = contactNew.getEmailAddress();
 		String output = contactUpdated.getEmailAddress();
 		assertEquals(expected, output);
+		expected = contactNew.getAddress().getStreetAddress();
+		output = contactUpdated.getAddress().getStreetAddress();
+		assertEquals(expected, output);
+		
 		deleteDummyData();
 	}
 
+	/*
+	 * This test first add a dummy account and two contacts into the DB then 
+	 * it deletes one contact and check if the size of contact table is 1 or not
+	 * In the end we are also removing our dummy data from the database
+	 */
 	@Test
 	public void testDeleteContactOfAccount() {
 		insertDummyData();
@@ -142,6 +176,11 @@ public class RescueManagerTest {
 		deleteDummyData();
 	}
 
+	/*
+	 * This test first add a dummy account and two contacts into the DB then 
+	 * it deletes both the contacts and check if the size of contact table is 0 or not
+	 * In the end we are also removing our dummy data from the database
+	 */
 	@Test
 	public void testDeleteAllContactsOfAccount() {
 		insertDummyData();
@@ -155,6 +194,7 @@ public class RescueManagerTest {
 		deleteDummyData();
 	}
 
+	//inserts one account and two contacts as dummy data
 	private void insertDummyData() {
 		manager.addNewAccount(dummyAccount1);
 		manager.addContactinAccount(dummyContact1, dummyAccount1.getId());
@@ -162,6 +202,8 @@ public class RescueManagerTest {
 
 	}
 
+	//delete the account results in deleting the contacts too 
+	//hence removing the dummy data
 	private void deleteDummyData() {
 		manager.deleteAccount(dummyAccount1.getId());
 

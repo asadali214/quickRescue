@@ -9,28 +9,33 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "Contact")
 public class Contact {
-	
-	@Id @GeneratedValue
+
+	@Id
+	@GeneratedValue
 	@Column(name = "id")
 	private int id;
+
 	@Column(name = "first_name")
 	private String firstName;
+
 	@Column(name = "last_name")
 	private String lastName;
+
 	@Column(name = "email_address")
 	private String emailAddress;
+
 	@Column(name = "gender")
 	private String gender;
+
 	@Column(name = "phone_number")
 	private String phoneNumber;
-	
+
 	@Column(name = "status")
 	private Boolean status;
-	
+
 	@OneToOne
 	private Address address;
 
@@ -54,8 +59,8 @@ public class Contact {
 		this.address = address;
 	}
 
-	//All the Getters&Setters are below:
-	
+	// All the Getters&Setters are below:
+
 	public int getId() {
 		return id;
 	}
@@ -63,7 +68,7 @@ public class Contact {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public String getFirstName() {
 		return firstName;
 	}
