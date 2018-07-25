@@ -9,7 +9,7 @@
 		<property name="hibernate.id.new_generator_mappings">false</property>
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/quick_rescue</property>
 		<property name="hibernate.connection.username">root</property>
-		<property name="hibernate.connection.password">GR911m31</property>
+		<property name="hibernate.connection.password">root1231233</property>
 		<property name="hibernate.hbm2ddl.auto">create</property>
 
 		<mapping class="gridSystem.entities.Account" />
