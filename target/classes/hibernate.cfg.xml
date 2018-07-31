@@ -15,6 +15,8 @@
 		<mapping class="gridSystem.entities.Account" />
 		<mapping class="gridSystem.entities.Contact" />
 		<mapping class="gridSystem.entities.Address" />
+		<mapping class="gridSystem.entities.AlertLocation" />
+		<mapping class="gridSystem.entities.AlertProfile" />
 		
 	</session-factory>
 </hibernate-configuration>

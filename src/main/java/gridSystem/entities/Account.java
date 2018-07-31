@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 //corporate members info
 @Entity
 @Table(name = "Account")
@@ -31,6 +32,9 @@ public class Account {
 
 	@OneToMany(mappedBy = "account")
 	private Collection<Contact> contacts = new ArrayList<Contact>();
+	
+	@OneToMany(mappedBy = "account")
+	private Collection<AlertProfile> alerts = new ArrayList<AlertProfile>();
 
 	public Account() {
 
